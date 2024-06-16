@@ -1,0 +1,6 @@
+/Logs
+/__pycache__
+.DS_Store
+.venv
+.vscode
+.ipynb_checkpoints
