@@ -29,7 +29,9 @@ You're reading it! Below I describe how I addressed each rubric point and where 
 #### 1. Explain the functionality of what's provided in `motion_planning.py` and `planning_utils.py`
 
 Unlike backyard_flyer_solution.py, which transitions from arming to takeoff, motion_planning.py introduces a new state called PLANNING. This state is used to calculate a path before the drone takes off. The planning phase includes reading obstacle data, generating a grid, finding a path using the A* algorithm, and converting this path into waypoints.
+
 The state transitions in motion_planning.py are modified to accommodate the planning phase. After arming, the drone transitions to the PLANNING state (motion_planning.py:129), where it calculates the flight path. It does this by selecting an arbitrary point within a grid that does not has obstacle (motion_planning.py:214) After planning drone proceed to takeoff, following the waypoints generated from the A* path (motion_planning.py:232) which are then pruned (motion_planning.py:240) by checking colinearity (I came up with nice recursive implementation motion_planning.py:41-62)).
+
 An additional method, send_waypoints, is used to send the calculated waypoints to the simulator. This is primarily for visualization purposes, allowing the user to see the planned path in the simulation environment.
 
 ### Implementing Your Path Planning Algorithm
